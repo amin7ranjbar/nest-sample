@@ -21,8 +21,8 @@ export class UserEntity {
   @DeleteDateColumn({ type: 'timestamp' })
   deleted_at: Date;
 
-  @Column()
-  public username: string;
+  @Column({ unique: true })
+  public email: string;
 
   @Column()
   public password: string;
