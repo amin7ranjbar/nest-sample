@@ -103,6 +103,14 @@ export class UserService {
     }
   }
 
+  public async saveAvatar(file, user) {
+    const userData = await this.getById(user.id);
+    userData.avatar = file.path;
+    await this.usersRepository.save(user);
+    userData.password = null;
+    return userData;
+  }
+
   private createAccessToken(
     id: number,
     email: string,

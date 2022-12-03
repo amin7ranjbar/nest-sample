@@ -26,4 +26,7 @@ export class UserEntity {
 
   @Column()
   public password: string;
+
+  @Column({ nullable: true })
+  public avatar: string;
 }

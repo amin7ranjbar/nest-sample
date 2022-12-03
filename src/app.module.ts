@@ -7,6 +7,8 @@ import { UserEntity } from './entity';
 import { UserController } from './controller';
 import { UserService } from './service';
 import { JwtModule } from '@nestjs/jwt';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -22,6 +24,9 @@ import { JwtModule } from '@nestjs/jwt';
         PGADMIN_DEFAULT_PASSWORD: Joi.string().required(),
         JWT_SECRET_KEY: Joi.string().required(),
       }),
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'upload'),
     }),
     TypeOrmModule.forRoot(dataSource.options),
     TypeOrmModule.forFeature([UserEntity]),
