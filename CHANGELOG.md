@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/amin7ranjbar/nest-sample/compare/v0.0.5...v0.0.6) (2022-12-03)
+
+
+### Bug Fixes
+
+* add multer and env configs ([9b3b1ee](https://github.com/amin7ranjbar/nest-sample/commit/9b3b1eed5d5c5f055f123babf938d19660b8c1cd))
+
 ### [0.0.5](https://github.com/amin7ranjbar/nest-sample/compare/v0.0.4...v0.0.5) (2022-12-03)
 
 
