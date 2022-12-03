@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/amin7ranjbar/nest-sample/compare/v0.0.3...v0.0.4) (2022-12-03)
+
+
+### Features
+
+* add versioning ([94dc663](https://github.com/amin7ranjbar/nest-sample/commit/94dc6636e9a2a4998d382d5c5cef0a76252bc41a))
+
 ### [0.0.3](https://github.com/amin7ranjbar/nest-sample/compare/v0.0.2...v0.0.3) (2022-12-03)
 
 
