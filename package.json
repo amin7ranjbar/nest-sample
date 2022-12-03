@@ -1,10 +1,10 @@
 {
    "name": "nest-sample",
    "version": "0.0.3",
-   "description": "",
-   "author": "",
-   "private": true,
-   "license": "UNLICENSED",
+   "description": "Sample Backend Application With Nestjs",
+   "author": "Amin Ranjbar <https://github.com/amin7ranjbar>",
+   "private": false,
+   "license": "MIT",
    "scripts": {
       "prebuild": "rimraf dist",
       "build": "nest build",
