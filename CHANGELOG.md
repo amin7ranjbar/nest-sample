@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/amin7ranjbar/nest-sample/compare/v0.0.4...v0.0.5) (2022-12-03)
+
+
+### Bug Fixes
+
+* change private to true ([4866064](https://github.com/amin7ranjbar/nest-sample/commit/48660640726e70a7b124662580a69111de631b66))
+
 ### [0.0.4](https://github.com/amin7ranjbar/nest-sample/compare/v0.0.3...v0.0.4) (2022-12-03)
 
 
