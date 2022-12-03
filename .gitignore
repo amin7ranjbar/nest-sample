@@ -37,3 +37,4 @@ lerna-debug.log*
 .env
 data
 upload/*
+!upload/.gitkeep
