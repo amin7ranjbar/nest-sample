@@ -3,7 +3,7 @@
    "version": "0.0.4",
    "description": "Sample Backend Application With Nestjs",
    "author": "Amin Ranjbar <https://github.com/amin7ranjbar>",
-   "private": false,
+   "private": true,
    "license": "MIT",
    "scripts": {
       "prebuild": "rimraf dist",
