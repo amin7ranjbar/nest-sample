@@ -1,5 +1,4 @@
 import {
-  BadRequestException,
   Body,
   Controller,
   Post,
@@ -13,9 +12,7 @@ import { UserService } from '../service';
 import { User } from '../decorator';
 import { JwtGuard } from '../guard';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { diskStorage } from 'multer';
-import { extname } from 'path';
-import { v4 as uuid } from 'uuid';
+import { multerOptions } from '../config';
 
 @Controller('user')
 @ApiTags('user')
@@ -54,31 +51,7 @@ export class UserController {
   })
   @UseGuards(JwtGuard)
   @Post('avatar')
-  @UseInterceptors(
-    FileInterceptor('file', {
-      storage: diskStorage({
-        destination: './upload/',
-        filename: function (req, file, cb) {
-          cb(null, uuid() + extname(file.originalname));
-        },
-      }),
-      limits: {
-        fileSize: 1048576, // 10 Mb
-      },
-      fileFilter: (req, file, cb) => {
-        const whitelist = [
-          'image/png',
-          'image/jpeg',
-          'image/jpg',
-          'image/webp',
-        ];
-        if (!whitelist.includes(file.mimetype)) {
-          return cb(new BadRequestException('file format is incorrect'), false);
-        }
-        cb(null, true);
-      },
-    }),
-  )
+  @UseInterceptors(FileInterceptor('file', multerOptions))
   saveAvatar(@UploadedFile() file: Express.Multer.File, @User() user) {
     return this.userService.saveAvatar(file, user);
   }
