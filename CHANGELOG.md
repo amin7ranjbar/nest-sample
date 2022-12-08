@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.9](https://github.com/amin7ranjbar/nest-sample/compare/v0.0.8...v0.0.9) (2022-12-08)
+
+
+### Bug Fixes
+
+* add new env to joi check ([1e9a60e](https://github.com/amin7ranjbar/nest-sample/commit/1e9a60ea29fc8243e9122a63b014bcafe9333b7f))
+
 ### [0.0.8](https://github.com/amin7ranjbar/nest-sample/compare/v0.0.7...v0.0.8) (2022-12-08)
 
 

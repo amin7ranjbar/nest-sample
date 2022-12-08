@@ -1,6 +1,6 @@
 {
    "name": "nest-sample",
-   "version": "0.0.8",
+   "version": "0.0.9",
    "description": "Sample Backend Application With Nestjs",
    "author": "Amin Ranjbar <https://github.com/amin7ranjbar>",
    "private": true,
