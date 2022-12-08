@@ -40,6 +40,7 @@
       "class-validator": "^0.13.2",
       "dotenv": "^16.0.3",
       "helmet": "^6.0.0",
+      "ioredis": "^5.2.4",
       "joi": "^17.7.0",
       "jsonwebtoken": "^8.5.1",
       "pg": "^8.4.0",

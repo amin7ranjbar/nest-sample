@@ -9,7 +9,7 @@ import {
 import { ApiBearerAuth, ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger';
 import { ChangePasswordDto, CreateUserDto } from '../dto';
 import { UserService } from '../service';
-import { User } from '../decorator';
+import { Token, User } from '../decorator';
 import { JwtGuard } from '../guard';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { multerOptions } from '../config';
@@ -32,8 +32,15 @@ export class UserController {
   @ApiBearerAuth()
   @UseGuards(JwtGuard)
   @Post('change-password')
-  async changePassword(@User() user, @Body() body: ChangePasswordDto) {
-    return this.userService.changePassword({ userId: user.id, ...body });
+  async changePassword(@User() user, @Token() token, @Body() body: ChangePasswordDto) {
+    return this.userService.changePassword({ userId: user.id, token, ...body });
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(JwtGuard)
+  @Post('logout')
+  async logout(@Token() token) {
+    return this.userService.logout({ token });
   }
 
   @ApiBearerAuth()

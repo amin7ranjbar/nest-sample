@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { ChangePasswordByIdDto, CreateUserDto } from '../dto';
@@ -6,6 +6,8 @@ import { PostgresErrorCode } from '../enum';
 import { UserEntity } from '../entity';
 import { compare, hash } from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
+import Redis from 'ioredis';
+import { LogoutDto } from 'src/dto';
 
 @Injectable()
 export class UserService {
@@ -13,7 +15,8 @@ export class UserService {
     @InjectRepository(UserEntity)
     private usersRepository: Repository<UserEntity>,
     private readonly jwtService: JwtService,
-  ) {}
+    @Inject("REDIS") private redisClient: Redis
+  ) { }
 
   async getByEmail(email: string) {
     const user = await this.usersRepository.findOneBy({ email });
@@ -73,7 +76,7 @@ export class UserService {
           HttpStatus.BAD_REQUEST,
         );
       }
-      return this.createAccessToken(user.id, user.email);
+      return await this.createAccessToken(user.id, user.email);
     } catch (error) {
       throw new HttpException(
         'Wrong credentials provided',
@@ -94,7 +97,8 @@ export class UserService {
       }
       user.password = await hash(body.newPassword, 10);
       await this.usersRepository.save(user);
-      return this.createAccessToken(user.id, user.email);
+      this.logout({ token: body.token })
+      return await this.createAccessToken(user.id, user.email);
     } catch (error) {
       throw new HttpException(
         'Wrong credentials provided',
@@ -111,10 +115,18 @@ export class UserService {
     return userData;
   }
 
-  private createAccessToken(
+  public async logout(body: LogoutDto) {
+    await this.redisClient.del(body.token);
+    return {};
+  }
+
+  private async createAccessToken(
     id: number,
     email: string,
-  ): { accessToken: string } {
-    return { accessToken: this.jwtService.sign({ id, email }) };
+  ): Promise<{ accessToken: string; }> {
+    const AFTER_ONE_DAY = 24 * 60 * 60;
+    const accessToken = this.jwtService.sign({ id, email });
+    await this.redisClient.set(accessToken, id, "EX", AFTER_ONE_DAY);
+    return { accessToken };
   }
 }
