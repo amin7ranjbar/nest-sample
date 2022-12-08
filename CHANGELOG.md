@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.8](https://github.com/amin7ranjbar/nest-sample/compare/v0.0.7...v0.0.8) (2022-12-08)
+
+
+### Features
+
+* add redis and commander password ([7a25552](https://github.com/amin7ranjbar/nest-sample/commit/7a25552e9dc6500ff051bcde72df80a59015e557))
+
 ### [0.0.7](https://github.com/amin7ranjbar/nest-sample/compare/v0.0.6...v0.0.7) (2022-12-08)
 
 
