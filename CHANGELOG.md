@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/amin7ranjbar/nest-sample/compare/v0.0.6...v0.0.7) (2022-12-08)
+
+
+### Features
+
+* add redis ([a927df9](https://github.com/amin7ranjbar/nest-sample/commit/a927df9f6c9a73771cc48473ac82edd81ad6b9fe))
+
 ### [0.0.6](https://github.com/amin7ranjbar/nest-sample/compare/v0.0.5...v0.0.6) (2022-12-03)
 
 
