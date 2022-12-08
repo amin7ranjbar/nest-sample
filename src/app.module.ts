@@ -31,9 +31,7 @@ import { default as Redis } from "ioredis"
         return new Redis({
           port: configService.get('REDIS_PORT'), // Redis port
           host: configService.get('REDIS_HOST'), // Redis host
-          // username: "default", // needs Redis >= 6
-          // password: "my-top-secret",
-          // db: 0, // Defaults to 0
+          password: configService.get('REDIS_PASSWORD'),
         });;
       },
       provide: 'REDIS',
